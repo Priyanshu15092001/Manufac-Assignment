@@ -11,6 +11,7 @@ export interface CropAverage {
 export function calculateCropAverages(data: CropData[]): CropAverage[] {
   const cropStats: { [cropName: string]: { totalYield: number; totalArea: number; count: number } } = {};
 
+  //calculating total yield and area of cultivation of each crop
   data.forEach(item => {
     const { CropName, Yield, Area } = item;
     if (CropName) { 
@@ -27,7 +28,7 @@ export function calculateCropAverages(data: CropData[]): CropAverage[] {
     const { totalYield, totalArea, count } = cropStats[cropName];
     return {
       cropName,
-      averageYield: parseFloat((totalYield / count).toFixed(3)),
+      averageYield: parseFloat((totalYield / count).toFixed(3)), //calculating average yield and area of cultivation of each crop rounded up to 3 decimal places
       averageArea: parseFloat((totalArea / count).toFixed(3)),
     };
   });
